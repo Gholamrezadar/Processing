@@ -1,2 +1,2 @@
 # Processing
-Processing Sketches
+Processing and Canvas Sketches
