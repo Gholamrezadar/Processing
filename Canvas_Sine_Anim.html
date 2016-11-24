@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #myCanvas
+        {
+            background: #292929;
+        }
+        
+        body
+        {
+            background: #292929;
+        }
+        
+        input[type="text"]:focus
+        {
+            outline: 0;
+            padding-left: 20px;
+        }
+        
+        input[type="text"]
+        {
+            border: none;
+            background-color: rgba(0, 0, 0,.3);
+            color: rgb(242, 15, 58);
+            font-family: segoe ui;
+            font-size: 20px;
+            width: 150px;
+            box-sizing: border-box;
+            position: absolute;
+            left:30px;
+            border-radius: 3px;
+            padding-left: 15px;
+        }
+        
+        #a
+        {
+            top:30px;
+        }
+        
+         #b
+        {
+            top:65px;
+        }
+    </style>
+    
+    
+</head>
+<body onload="start();">
+    <canvas width="1000px" height="1000px" id="myCanvas"></canvas>
+    
+    <input type="text"  id="a" value="1" onchange="myupdate();">
+    <input type="text"  id="b" value="0.1" onchange="myupdate();">
+    
+    <script>
+        var myCanvas = document.getElementById("myCanvas");
+        var ctx = myCanvas.getContext("2d");
+        ctx.translate(500,500);
+        ctx.lineWidth=1;
+        ctx.strokeStyle = "rgb(242, 15, 58)";
+        var a=1;
+        var b=4;
+        
+        function myDraw(_a,_b)
+        {
+            ctx.beginPath();
+            ctx.moveTo(_a*Math.cos(0*_b),_a*Math.sin(0*_b));
+            for(var i=0; i<250;i++)    
+            {
+                ctx.lineTo(_a*i*Math.cos(i*_b),_a*i*Math.sin(i*_b));
+                ctx.stroke();    
+            } 
+        }
+        
+        function myupdate()
+        {
+            
+            var _a = parseFloat(document.getElementById("a").value);
+            var _b = parseFloat(document.getElementById("b").value);
+            ctx.clearRect(-500,-500,1000,1000);
+            myDraw(_a,_b); 
+            document.getElementById("b").value = _b+.005;
+        }
+        
+        function start()
+        {
+            setInterval(myupdate,100);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
